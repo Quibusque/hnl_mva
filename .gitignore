@@ -1,2 +1,4 @@
 plots/*
 *.out
+cfg/ntuples.json
+*pyc
