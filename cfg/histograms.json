@@ -1,0 +1,9 @@
+[
+    {
+        "column_name" : "C_Hnl_mass",
+        "nbins" : 20,
+        "xlow" : 0.5,
+        "xhigh" : 1.8,
+        "xlabel" : "HNL $p_T$ [GeV]"
+    }
+]
