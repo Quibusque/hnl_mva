@@ -1,4 +1,4 @@
-# matplotlib
+import uproot
 import matplotlib.pyplot as plt
 import awkward as ak
 import json
@@ -17,7 +17,16 @@ def read_json_file(filename):
         data = json.load(file)
     return data
 
-def plot(column_name,weight_name,stree,btrees,nbins,xlow,xhigh,xlabel):
+def plot(ntuples_cfg,treename,weight_name,histo_cfg):
+
+    column_name = histo_cfg["column_name"]
+    nbins = histo_cfg["nbins"]
+    xlow = histo_cfg["xlow"]
+    xhigh = histo_cfg["xhigh"]
+    xlabel = histo_cfg["xlabel"]
+
+    stree = uproot.open(ntuples_cfg["signal"][0])[treename]
+    btrees = [uproot.open(bfn)[treename] for bfn in ntuples_cfg["background"]]
 
     data_sig = stree.arrays(column_name)
     data_bkg = [btree.arrays(column_name) for btree in btrees]    
@@ -28,17 +37,15 @@ def plot(column_name,weight_name,stree,btrees,nbins,xlow,xhigh,xlabel):
     sa = ak.flatten(data_sig,axis=None)
     ba = [ak.flatten(ba,axis=None) for ba in data_bkg]
 
-    #probably there is a more clever way to initialize weights...
     sw = np.repeat(weight_sig.to_list(), [len(sublist.to_list()[column_name]) for sublist in data_sig])
     bw = [np.repeat(bw.to_list(), [len(sublist.to_list()[column_name]) for sublist in ba]) for (bw,ba) in zip(weight_bkg,data_bkg)]
 
-    #...and to avoid having to do this
     sw = [x[weight_name] for x in sw]
     bw = [[x[weight_name] for x in b] for b in bw]
 
     bins = np.linspace(xlow, xhigh, nbins)
 
-    bkg_labels = [s[s.rfind("QCD_Pt-"):s.rfind("_MuEnriched")] for s in ntuples["background"]]
+    bkg_labels = [s[s.rfind("QCD_Pt-"):s.rfind("_MuEnriched")] for s in ntuples_cfg["background"]]
 
 
     fig, ax = plt.subplots()
