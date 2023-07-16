@@ -3,11 +3,7 @@ import json
 import os
 import files
 import subprocess
-
-def write_json_file(filename, data):
-    """Write data to a JSON file."""
-    with open(filename, 'w') as file:
-        json.dump(data, file, indent=4)
+from hnl_mva_tools import *
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
