@@ -4,6 +4,13 @@
         "nbins" : 20,
         "xlow" : 0.5,
         "xhigh" : 1.8,
+        "xlabel" : "HNL mass [GeV]"
+    },
+    {
+        "column_name" : "C_Hnl_pt",
+        "nbins" : 20,
+        "xlow" : 0,
+        "xhigh" : 50,
         "xlabel" : "HNL $p_T$ [GeV]"
     }
 ]
