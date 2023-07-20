@@ -1,13 +1,14 @@
 import argparse
 import json
 import os
-import files
+import script.files as files
 import subprocess
-from hnl_mva_tools import *
+from script.hnl_mva_tools import write_json_file
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('inputdir', type=str, help='Name of the input directory')
+    parser.add_argument('-o', '--outputdir', type=str, default='cfg', help= 'Name of the output config directory, defaults to "cfg"')
     args = parser.parse_args()
 
     inputdir = args.inputdir
@@ -15,8 +16,7 @@ if __name__ == '__main__':
     cfg["background"] = [os.path.join(inputdir,x) for x in files.background_filenames]
     cfg["signal"] = [os.path.join(inputdir,x) for x in files.signal_filenames]
 
-    outdir = "cfg"
-    subprocess.call("mkdir -p {}".format(outdir),shell=True)
+    if not os.path.exists(args.outputdir):
+        os.makedirs(args.outputdir)
     # Write the data to the JSON file
-    write_json_file(os.path.join(outdir,"ntuples.json"), cfg)
-
+    write_json_file(os.path.join(args.outputdir,"ntuples.json"), cfg)
