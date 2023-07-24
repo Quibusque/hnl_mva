@@ -6,7 +6,7 @@ source /cvmfs/sft.cern.ch/lcg/views/dev4/latest/x86_64-centos7-gcc12-opt/setup.s
 python config.py ntuples_input_directory
 ```
 
-It is also possible to configure the output directory path, with the `-o` optio.
+It is also possible to configure the output directory path, with the `-o` option.
 
 ## Run
 
