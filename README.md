@@ -91,3 +91,7 @@ Then reboot the SSH connection.
 the following connections. 
 
 Now you can use jupyter normally, with all the dependencies installed! 
+
+### Throubleshooting
+If some step was not successful, it is important to fully delete the folder `.vscode-server` before 
+retrying from scratch.
