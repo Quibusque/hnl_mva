@@ -34,19 +34,23 @@ def load_variables(ntuples_cfg, headers, treename, weight_name):
     print("The following headers will be loaded: " + ', '.join(headers))
     for h in headers:
         print("Loading variable: " + h)
-        sa = ak.flatten(data_sig[h],axis=None)
-        ba = [ak.flatten(ba[h],axis=None) for ba in data_bkg]
+        ##signal
+        sa = data_sig[h]
+        sw = weight_sig[weight_name]
+        #broadcast sw with sa to match the shape
+        sw = ak.broadcast_arrays(sw, sa)[0]
+        
+        sig[h] = ak.flatten(sa)
+        sig_weight[h] = ak.flatten(sw)
 
-        sw = np.repeat(weight_sig.to_list(), [len(sublist.to_list()[h]) for sublist in data_sig])
-        bw = [np.repeat(bw.to_list(), [len(sublist.to_list()[h]) for sublist in ba]) for (bw,ba) in zip(weight_bkg,data_bkg)]
+        ##background
+        ba = [data_bkg[i][h] for i in range(len(data_bkg))]
+        bw = [weight_bkg[i][weight_name] for i in range(len(weight_bkg))]
+        #broadcast bw with ba to match the shape
+        bw = [ak.broadcast_arrays(bw[i], ba[i])[0] for i in range(len(bw))]
 
-        sw = [x[weight_name] for x in sw]
-        bw = [[x[weight_name] for x in b] for b in bw]
-
-        sig[h] = sa
-        bkg[h] = ba
-        sig_weight[h] = sw
-        bkg_weight[h] = bw
+        bkg[h] = [ak.flatten(ba[i]) for i in range(len(ba))]
+        bkg_weight[h] = [ak.flatten(bw[i]) for i in range(len(bw))]
     print("Variables Loaded!")
     return sig, bkg, sig_weight, bkg_weight
     
