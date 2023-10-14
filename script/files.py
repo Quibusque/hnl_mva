@@ -1,4 +1,17 @@
-signal_filenames = ["tree_HnlToMuPi_prompt_DsToNMu_NToMuPi_SoftQCDnonD_noQuarkFilter_mN1p0_ctau10p0mm_TuneCP5_13TeV-pythia8-evtgen_tree.root"]
+signal_filenames = [
+    'tree_HnlToMuPi_prompt_DsToNMu_NToMuPi_SoftQCDnonD_noQuarkFilter_mN1p0_ctau1000p0mm_TuneCP5_13TeV-pythia8-evtgen_tree.root',
+    'tree_HnlToMuPi_prompt_DsToNMu_NToMuPi_SoftQCDnonD_noQuarkFilter_mN1p0_ctau100p0mm_TuneCP5_13TeV-pythia8-evtgen_tree.root',
+    'tree_HnlToMuPi_prompt_DsToNMu_NToMuPi_SoftQCDnonD_noQuarkFilter_mN1p0_ctau10p0mm_TuneCP5_13TeV-pythia8-evtgen_tree.root',
+    'tree_HnlToMuPi_prompt_DsToNMu_NToMuPi_SoftQCDnonD_noQuarkFilter_mN1p25_ctau1000p0mm_TuneCP5_13TeV-pythia8-evtgen_tree.root',
+    'tree_HnlToMuPi_prompt_DsToNMu_NToMuPi_SoftQCDnonD_noQuarkFilter_mN1p25_ctau100p0mm_TuneCP5_13TeV-pythia8-evtgen_tree.root',
+    'tree_HnlToMuPi_prompt_DsToNMu_NToMuPi_SoftQCDnonD_noQuarkFilter_mN1p25_ctau10p0mm_TuneCP5_13TeV-pythia8-evtgen_tree.root',
+    'tree_HnlToMuPi_prompt_DsToNMu_NToMuPi_SoftQCDnonD_noQuarkFilter_mN1p5_ctau1000p0mm_TuneCP5_13TeV-pythia8-evtgen_tree.root',
+    'tree_HnlToMuPi_prompt_DsToNMu_NToMuPi_SoftQCDnonD_noQuarkFilter_mN1p5_ctau100p0mm_TuneCP5_13TeV-pythia8-evtgen_tree.root',
+    'tree_HnlToMuPi_prompt_DsToNMu_NToMuPi_SoftQCDnonD_noQuarkFilter_mN1p5_ctau10p0mm_TuneCP5_13TeV-pythia8-evtgen_tree.root',
+    'tree_HnlToMuPi_prompt_DsToNMu_NToMuPi_SoftQCDnonD_noQuarkFilter_mN1p8_ctau1000p0mm_TuneCP5_13TeV-pythia8-evtgen_tree.root',
+    'tree_HnlToMuPi_prompt_DsToNMu_NToMuPi_SoftQCDnonD_noQuarkFilter_mN1p8_ctau100p0mm_TuneCP5_13TeV-pythia8-evtgen_tree.root',
+    'tree_HnlToMuPi_prompt_DsToNMu_NToMuPi_SoftQCDnonD_noQuarkFilter_mN1p8_ctau10p0mm_TuneCP5_13TeV-pythia8-evtgen_tree.root'
+]
 background_filenames = ['tree_HnlToMuPi_prompt_QCD_Pt-20To30_MuEnrichedPt5_TuneCP5_13TeV-pythia8_tree.root', 
                         'tree_HnlToMuPi_prompt_QCD_Pt-30To50_MuEnrichedPt5_TuneCP5_13TeV-pythia8_tree.root', 
                         'tree_HnlToMuPi_prompt_QCD_Pt-50To80_MuEnrichedPt5_TuneCP5_13TeV-pythia8_tree.root', 
